@@ -241,3 +241,21 @@ input[type="submit"]:hover, input[type="submit"]:focus {
   outline: none;
 }
 
+.footer-links {
+  width: 100%;
+  text-align: center;
+  margin: 2rem 0 0 0;
+  font-size: 1rem;
+  color: #888;
+  letter-spacing: 0.02em;
+}
+.footer-links a {
+  color: #888;
+  text-decoration: none;
+  margin: 0 0.2em;
+  transition: color 0.2s;
+}
+.footer-links a:hover {
+  color: #ff9800;
+  text-decoration: underline;
+}
