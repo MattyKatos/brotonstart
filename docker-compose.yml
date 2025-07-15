@@ -1,0 +1,8 @@
+version: '3.8'
+services:
+  brotonstart:
+    build: .
+    ports:
+      - "6969:6969"
+    container_name: brotonstart
+    restart: unless-stopped
