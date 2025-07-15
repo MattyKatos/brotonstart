@@ -9,6 +9,8 @@
 </head>
 <body>
   <h1>Someting Wong</h1>
+  <!-- ... rest of page ... -->
+
   <form action="https://duckduckgo.com/" method="get">
     <input type="text" name="q" placeholder="Gaze into the abyss..." autofocus />
     <input type="submit" value="Send it." />
@@ -17,6 +19,14 @@
     <div class="links">
       <!-- Links will be rendered here by main.js -->
     </div>
+  </div>
+  <div class="sfw-toggle-container">
+    <label class="sfw-toggle-label" title="Makes the website boring by removing the random header.">
+      <input type="checkbox" id="sfw-toggle" /> SFW Mode
+    </label>
+    <label class="sfw-toggle-label" title="Use Google to search instead of DuckDuckGo. (For normies)">
+      <input type="checkbox" id="normy-toggle" /> Normy Mode
+    </label>
   </div>
   <script src="links.config.js"></script>
   <script src="title.config.js"></script>
