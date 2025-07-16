@@ -71,12 +71,14 @@ window.addEventListener('DOMContentLoaded', function() {
     h1.textContent = randomHeader.title || randomHeader;
   }
 
+  // Always use client-side header: fetch titles and render immediately
   fetch('titles.json')
     .then(response => response.json())
     .then(data => {
       window.BROTON_HEADERS = data;
       renderHeader();
     });
+
 
   updateSearchForm();
 

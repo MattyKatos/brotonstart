@@ -9,7 +9,7 @@
 </head>
 <body>
   <%- include('_navbar', { sfw: sfw, normy: normy }) %>
-  <h1><%= header || 'search.broton' %></h1>
+  <h1 id="main-header"></h1>
   <!-- ... rest of page ... -->
 
   <form action="<%= normy ? 'https://www.google.com/search' : 'https://duckduckgo.com/' %>" method="get">
