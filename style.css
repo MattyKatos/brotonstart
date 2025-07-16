@@ -63,8 +63,10 @@
   margin-bottom: 0;
 }
 body {
+  opacity: 0;
+  transition: opacity 0.7s;
+  background: #000;
   padding-top: 56px; /* match header-bar height to prevent overlap */
-  background-color: #121212;
   color: #f0f0f0;
   font-family: 'Courier New', monospace;
   display: flex;
@@ -77,6 +79,11 @@ body {
   box-sizing: border-box;
   position: relative;
 }
+body.fade-in {
+  opacity: 1;
+  background-color: #121212;
+}
+
 
 .sfw-toggle-container {
   width: 100%;

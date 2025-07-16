@@ -1,5 +1,14 @@
 // Dynamically render links from BROTON_LINKS
 window.addEventListener('DOMContentLoaded', function() {
+  let linksLoaded = false, headersLoaded = false;
+  function maybeFadeIn() {
+    // Only fade in after both links and headers are loaded
+    if (document.body.classList.contains('fade-in')) return;
+    if (window.BROTON_LINKS && window.BROTON_HEADERS) {
+      document.body.classList.add('fade-in');
+    }
+  }
+
   // Dropdown logic for header toggles
   const dropdownBtn = document.getElementById('dropdown-toggle');
   const dropdownContent = document.getElementById('dropdown-content');
@@ -77,6 +86,7 @@ window.addEventListener('DOMContentLoaded', function() {
     .then(data => {
       window.BROTON_HEADERS = data;
       renderHeader();
+      maybeFadeIn();
     });
 
 
@@ -136,5 +146,7 @@ window.addEventListener('DOMContentLoaded', function() {
           </a>`;
         }).join(' ');
       }
+      maybeFadeIn();
     });
+
 });
