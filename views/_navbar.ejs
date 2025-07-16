@@ -1,0 +1,14 @@
+<div class="header-bar">
+  <span class="header-title">search.broton</span>
+  <div class="header-dropdown">
+    <button class="dropdown-toggle" id="dropdown-toggle" aria-label="Show options">☰</button>
+    <div class="dropdown-content" id="dropdown-content">
+      <label class="sfw-toggle-label" title="Makes the website boring by removing the random header.">
+        <input type="checkbox" id="sfw-toggle" <%= sfw ? 'checked' : '' %> /> SFW Mode
+      </label>
+      <label class="sfw-toggle-label" title="Use Google to search instead of DuckDuckGo. (For normies)">
+        <input type="checkbox" id="normy-toggle" <%= normy ? 'checked' : '' %> /> Normy Mode
+      </label>
+    </div>
+  </div>
+</div>

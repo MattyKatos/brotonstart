@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>BROTON Start</title>
+  <link rel="icon" type="image/png" href="/favicon.png" />
+  <link rel="stylesheet" href="/style.css" />
+</head>
+<body>
+  <%- include('_navbar', { sfw: sfw, normy: normy }) %>
+  <h1><%= header || 'search.broton' %></h1>
+  <!-- ... rest of page ... -->
+
+  <form action="<%= normy ? 'https://www.google.com/search' : 'https://duckduckgo.com/' %>" method="get">
+    <input type="text" name="q" placeholder="<%= normy ? 'The abyss stares back...' : 'Gaze into the abyss...' %>" autofocus />
+    <input type="submit" value="Send it." />
+  </form>
+  <div class="links-container">
+    <div class="links">
+      <% if (links && links.length) { %>
+        <% links.forEach(function(link) { %>
+          <a href="<%= link.url %>" target="_blank" class="link-btn">
+            <% if (link.favicon) { %>
+              <img src="<%= link.favicon %>" class="favicon" alt="" />
+            <% } else { %>
+              <span class="fallback-icon" style="font-size:1.2em;vertical-align:middle;margin-right:0.6em;">🌐</span>
+            <% } %>
+            <span class="btn-text"><%= link.name %></span>
+          </a>
+        <% }); %>
+      <% } %>
+    </div>
+  </div>
+  <script src="/links.config.js"></script>
+  <script src="/title.config.js"></script>
+  <script src="/main.js"></script>
+  <div class="footer-links">
+    <a href="https://github.com/" target="_blank" rel="noopener">github</a> |
+    <a href="#" target="_blank" rel="noopener">donate</a>
+  </div>
+</body>
+</html>
