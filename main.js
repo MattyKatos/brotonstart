@@ -123,30 +123,118 @@ window.addEventListener('DOMContentLoaded', function() {
     .then(response => response.json())
     .then(data => {
       window.BROTON_LINKS = data;
-      const linksDiv = document.querySelector('.links');
-      if (linksDiv) {
-        linksDiv.innerHTML = window.BROTON_LINKS.map(link => {
-          // Extract domain for favicon
-          let domain;
-          try {
-            domain = new URL(link.url).hostname;
-          } catch (e) {
-            domain = '';
-          }
-          let faviconUrl = '';
-          if (link.favicon) {
-            faviconUrl = link.favicon;
-          } else if (domain) {
-            faviconUrl = `https://www.google.com/s2/favicons?domain=${domain}&sz=32`;
-          }
-          return `<a href="${link.url}" target="_blank" class="link-btn">
-            ${faviconUrl ? `<img src='${faviconUrl}' class='favicon' alt='' onerror="this.style.display='none';this.parentNode.querySelector('.fallback-icon').style.display='inline-block';" />` : ''}
-            <span class="fallback-icon" style="display:${faviconUrl ? 'none' : 'inline-block'};font-size:1.2em;vertical-align:middle;margin-right:0.6em;">🌐</span>
-            <span class="btn-text">${link.name}</span>
-          </a>`;
-        }).join(' ');
-      }
+      renderAllLinks();
       maybeFadeIn();
     });
 
+  function renderAllLinks() {
+    const favsDiv = document.querySelector('.links-favorites');
+    const catsDiv = document.querySelector('.links-categories');
+    if (!favsDiv || !catsDiv) return;
+    const favs = JSON.parse(localStorage.getItem('BROTON_FAVS') || '[]');
+    // Build favorites - always visible
+    const favLinks = window.BROTON_LINKS.filter(l => favs.includes(l.url));
+    favsDiv.innerHTML = favLinks.length ? `<div class="favorites-section">` + favLinks.map(link => renderLink(link, true)).join('') + '</div>' : '';
+    // Build categories
+    const linksByCat = {};
+    window.BROTON_LINKS.forEach(link => {
+      if (favs.includes(link.url)) return; // skip if favorited
+      if (!linksByCat[link.category]) linksByCat[link.category] = [];
+      linksByCat[link.category].push(link);
+    });
+    // Get active category from localStorage, default to none selected
+    const activeCategory = localStorage.getItem('BROTON_ACTIVE_CATEGORY') || 'none';
+    
+    // Create tabs navigation without "All" tab
+    const tabsHtml = `<div class="category-tabs">
+      ${Object.keys(linksByCat).sort().map(cat => 
+        `<div class="category-tab${cat === activeCategory ? ' active' : ''}" data-category="${cat}">${cat}</div>`
+      ).join('')}
+    </div>`;
+    
+    // Create a single area for all links with data-category attributes
+    const allLinksHtml = `<div class="all-links-area">
+      ${Object.keys(linksByCat).sort().flatMap(cat => 
+        linksByCat[cat].map(link => {
+          const linkHtml = renderLink(link, false);
+          // Add data-category attribute to the link-row div and hide by default if no category is selected
+          const isHidden = activeCategory === 'none' || (activeCategory !== 'all' && activeCategory !== cat);
+          return linkHtml.replace('<div class="link-row">', `<div class="link-row${isHidden ? ' hidden' : ''}" data-category="${cat}">`);
+        })
+      ).join('')}
+    </div>`;
+    
+    // Combine tabs and all links area
+    catsDiv.innerHTML = tabsHtml + allLinksHtml;
+    // Add click handlers for stars
+    document.querySelectorAll('.fav-star').forEach(star => {
+      star.addEventListener('click', function(e) {
+        e.preventDefault();
+        const url = this.dataset.url;
+        let favs = JSON.parse(localStorage.getItem('BROTON_FAVS') || '[]');
+        if (favs.includes(url)) {
+          favs = favs.filter(u => u !== url);
+        } else {
+          favs.push(url);
+        }
+        localStorage.setItem('BROTON_FAVS', JSON.stringify(favs));
+        renderAllLinks();
+      });
+    });
+    
+    // Add click handlers for category tabs
+    document.querySelectorAll('.category-tab').forEach(tab => {
+      tab.addEventListener('click', function() {
+        const category = this.dataset.category;
+        const isAlreadyActive = this.classList.contains('active');
+        
+        // Remove active class from all tabs
+        document.querySelectorAll('.category-tab').forEach(t => t.classList.remove('active'));
+        
+        // If clicking an already active tab, deselect it
+        if (isAlreadyActive) {
+          // Hide all non-favorite links when deselecting
+          document.querySelectorAll('.all-links-area .link-row:not(.favorite-link)').forEach(link => {
+            link.classList.add('hidden');
+          });
+          
+          // Save 'none' as active category to localStorage
+          localStorage.setItem('BROTON_ACTIVE_CATEGORY', 'none');
+        } else {
+          // Add active class to clicked tab
+          this.classList.add('active');
+          
+          // Show/hide category links based on category (not affecting favorites)
+          document.querySelectorAll('.all-links-area .link-row:not(.favorite-link)').forEach(link => {
+            if (link.dataset.category === category) {
+              link.classList.remove('hidden');
+            } else {
+              link.classList.add('hidden');
+            }
+          });
+          
+          // Save active category to localStorage
+          localStorage.setItem('BROTON_ACTIVE_CATEGORY', category);
+        }
+        
+        // Ensure all favorite links are always visible
+        document.querySelectorAll('.favorite-link').forEach(link => {
+          link.classList.remove('hidden');
+        });
+      });
+    });
+  }
+
+  function renderLink(link, isFav) {
+    let domain;
+    try { domain = new URL(link.url).hostname; } catch (e) { domain = ''; }
+    let faviconUrl = link.favicon ? link.favicon : (domain ? `https://www.google.com/s2/favicons?domain=${domain}&sz=32` : '');
+    // Don't add data-category to favorites links so they won't be filtered
+    return `<div class="link-row${isFav ? ' favorite-link' : ''}"><a href="${link.url}" target="_blank" class="link-btn">`
+      + `${faviconUrl ? `<img src='${faviconUrl}' class='favicon' alt='' onerror="this.style.display='none';this.parentNode.querySelector('.fallback-icon').style.display='inline-block';" />` : ''}`
+      + `<span class="fallback-icon" style="display:${faviconUrl ? 'none' : 'inline-block'};font-size:1.2em;vertical-align:middle;margin-right:0.6em;">🌐</span>`
+      + `<span class="btn-text">${link.name}</span>`
+      + `<span class="fav-star${isFav ? ' fav-starred' : ''}" style="color: ${isFav ? '#ffb300' : '#ffffff'} !important;" title="${isFav ? 'Unfavorite' : 'Favorite'}" data-url="${link.url}">&#9733;</span>`
+      + `</a></div>`;
+  }
 });

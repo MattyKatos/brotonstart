@@ -17,20 +17,8 @@
     <input type="submit" value="Send it." />
   </form>
   <div class="links-container">
-    <div class="links">
-      <% if (links && links.length) { %>
-        <% links.forEach(function(link) { %>
-          <a href="<%= link.url %>" target="_blank" class="link-btn">
-            <% if (link.favicon) { %>
-              <img src="<%= link.favicon %>" class="favicon" alt="" />
-            <% } else { %>
-              <span class="fallback-icon" style="font-size:1.2em;vertical-align:middle;margin-right:0.6em;">🌐</span>
-            <% } %>
-            <span class="btn-text"><%= link.name %></span>
-          </a>
-        <% }); %>
-      <% } %>
-    </div>
+    <div class="links-favorites"></div>
+    <div class="links-categories"></div>
   </div>
   <script src="/links.config.js"></script>
   <script src="/title.config.js"></script>

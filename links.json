@@ -1,28 +1,189 @@
 [
     {
         "name": "Proton Mail",
-        "url": "https://mail.proton.me/"
+        "url": "https://mail.proton.me/",
+        "category": "Mail"
       },
       {
         "name": "Gmail",
         "url": "https://mail.google.com/",
-        "favicon": "https://img.icons8.com/?size=100&id=P7UIlhbpWzZm&format=png&color=000000"
+        "favicon": "https://img.icons8.com/?size=100&id=P7UIlhbpWzZm&format=png&color=000000",
+        "category": "Mail"
+      },
+      {
+        "name": "Outlook",
+        "url": "https://outlook.office.com/",
+        "category": "Mail"
+      },
+      {
+        "name": "Hotmail",
+        "url": "https://outlook.live.com",
+        "category": "Mail"
+      },
+      {
+        "name": "Yahoo Mail",
+        "url": "https://mail.yahoo.com",
+        "category": "Mail"
+      },
+      {
+        "name": "Proton Drive",
+        "url": "https://drive.proton.me/",
+        "category": "Cloud"
+      },
+      {
+        "name": "Google Drive",
+        "url": "https://drive.google.com/",
+        "category": "Cloud"
+      },
+      {
+        "name": "OneDrive",
+        "url": "https://onedrive.live.com/",
+        "category": "Cloud"
+      },
+      {
+        "name": "Dropbox",
+        "url": "https://dropbox.com/",
+        "category": "Cloud"
       },
       {
         "name": "YouTube",
-        "url": "https://youtube.com"
+        "url": "https://youtube.com",
+        "category": "Entertainment"
+      },
+      {
+        "name": "HIDIVE",
+        "url": "https://hidive.com",
+        "category": "Anime"
+      },
+      {
+        "name": "Crunchyroll",
+        "url": "https://crunchyroll.com",
+        "category": "Anime"
+      },
+      {
+        "name": "Hulu",
+        "url": "https://hulu.com",
+        "category": "Entertainment"
+      },
+      {
+        "name": "Netflix",
+        "url": "https://netflix.com",
+        "category": "Entertainment"
+      },
+      {
+        "name": "HBO Max",
+        "url": "https://hbomax.com",
+        "category": "Entertainment"
+      },
+      {
+        "name": "Disney+",
+        "url": "https://disneyplus.com",
+        "category": "Entertainment"
+      },
+      {
+        "name": "Peacock",
+        "url": "https://peacocktv.com",
+        "category": "Entertainment"
+      },
+      {
+        "name": "Apple TV+",
+        "url": "https://tv.apple.com/",
+        "category": "Entertainment"
+      },
+      {
+        "name": "Prime Video",
+        "url": "https://www.amazon.com/Amazon-Video/",
+        "category": "Entertainment"
+      },
+      {
+        "name": "Plex",
+        "url": "https://app.plex.tv",
+        "category": "Entertainment"
+      },
+      {
+        "name": "MDE TV",
+        "url": "https://mde.tv",
+        "category": "Entertainment"
+      },
+      {
+        "name": "Fishtank",
+        "url": "https://fishtank.live",
+        "category": "Entertainment"
+      },
+      {
+        "name": "YouTube Music",
+        "url": "https://music.youtube.com",
+        "category": "Music"
+      },
+      {
+        "name": "Spotify",
+        "url": "https://open.spotify.com/",
+        "category": "Music"
+      },
+      {
+        "name": "SoundCloud",
+        "url": "https://soundcloud.com",
+        "category": "Music"
+      },
+      {
+        "name": "Twitch",
+        "url": "https://twitch.tv",
+        "category": "Entertainment"
+      },
+      {
+        "name": "Instagram",
+        "url": "https://instagram.com",
+        "category": "Social"
+      },
+      {
+        "name": "Facebook",
+        "url": "https://facebook.com",
+        "category": "Social"
       },
       {
         "name": "Twitter",
-        "url": "https://twitter.com"
+        "url": "https://twitter.com",
+        "category": "Social"
+      },
+      {
+        "name": "Reddit",
+        "url": "https://reddit.com",
+        "category": "Social"
       },
       {
         "name": "ChatGPT",
-        "url": "https://chat.openai.com/"
+        "url": "https://chat.openai.com/",
+        "category": "AI"
       },
       {
         "name": "Grok",
         "url": "https://grok.com/",
-        "favicon": "https://img.icons8.com/?size=100&id=8QGE7uQedCwQ&format=png&color=000000"
+        "favicon": "https://img.icons8.com/?size=100&id=8QGE7uQedCwQ&format=png&color=000000",
+        "category": "AI"
+      },
+      {
+        "name": "Amazon",
+        "url": "https://amazon.com",
+        "category": "Shopping"
+      },
+      {
+        "name": "Etsy",
+        "url": "https://etsy.com",
+        "category": "Shopping"
+      },
+      {
+        "name": "Ebay",
+        "url": "https://ebay.com",
+        "category": "Shopping"
+      },
+      {
+        "name": "Discord",
+        "url": "https://discord.com/channels/@me",
+        "category": "Chat"
+      },
+      {
+        "name": "Teams",
+        "url": "https://teams.microsoft.com",
+        "category": "Chat"
       }
 ]
