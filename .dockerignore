@@ -9,3 +9,6 @@ docker-compose.yml
 .idea
 .vscode
 .env
+links.config.js
+title.config.js
+search_engines.config.js

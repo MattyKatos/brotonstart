@@ -1,0 +1,39 @@
+[
+  {
+    "name": "DuckDuckGo",
+    "action": "https://duckduckgo.com/",
+    "queryParam": "q",
+    "placeholder": "Gaze into the abyss...",
+    "isDefault": true
+  },
+  {
+    "name": "Google",
+    "action": "https://www.google.com/search",
+    "queryParam": "q",
+    "placeholder": "The abyss stares back..."
+  },
+  {
+    "name": "Bing",
+    "action": "https://www.bing.com/search",
+    "queryParam": "q",
+    "placeholder": "Ask the void..."
+  },
+  {
+    "name": "Brave Search",
+    "action": "https://search.brave.com/search",
+    "queryParam": "q",
+    "placeholder": "Seek the unknown..."
+  },
+  {
+    "name": "Ecosia",
+    "action": "https://www.ecosia.org/search",
+    "queryParam": "q",
+    "placeholder": "The trees are speaking..."
+  },
+  {
+    "name": "StartPage",
+    "action": "https://www.startpage.com/do/search",
+    "queryParam": "q",
+    "placeholder": "Peer behind the curtain..."
+  }
+]

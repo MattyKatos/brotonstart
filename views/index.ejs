@@ -8,20 +8,21 @@
   <link rel="stylesheet" href="/style.css" />
 </head>
 <body>
-  <%- include('_navbar', { sfw: sfw, normy: normy }) %>
+  <%- include('_navbar', { sfw: sfw }) %>
   <h1 id="main-header"></h1>
   <!-- ... rest of page ... -->
 
-  <form action="<%= normy ? 'https://www.google.com/search' : 'https://duckduckgo.com/' %>" method="get">
-    <input type="text" name="q" placeholder="<%= normy ? 'The abyss stares back...' : 'Gaze into the abyss...' %>" autofocus />
+  <form id="search-form" action="https://duckduckgo.com/" method="get">
+    <input type="text" id="search-input" name="q" placeholder="Gaze into the abyss..." autofocus />
     <input type="submit" value="Send it." />
   </form>
   <div class="links-container">
     <div class="links-favorites"></div>
-    <div class="links-categories"></div>
+    <!-- Category links moved to sidebar -->
   </div>
   <script src="/links.config.js"></script>
   <script src="/title.config.js"></script>
+  <script src="/search_engines.config.js"></script>
   <script src="/main.js"></script>
   <div class="footer-links">
     <a href="https://github.com/mattykatos/brotonstart" target="_blank" rel="noopener">github</a> |

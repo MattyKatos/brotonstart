@@ -94,3 +94,8 @@ Thumbs.db
 .idea/
 *.sublime-workspace
 *.sublime-project
+
+# Generated files
+links.config.js
+title.config.js
+search_engines.config.js

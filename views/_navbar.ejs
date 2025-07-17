@@ -1,14 +1,44 @@
 <div class="header-bar">
+  <div class="header-left"></div>
   <span class="header-title">search.broton</span>
-  <div class="header-dropdown">
-    <button class="dropdown-toggle" id="dropdown-toggle" aria-label="Show options">☰</button>
-    <div class="dropdown-content" id="dropdown-content">
-      <label class="sfw-toggle-label" title="Makes the website boring by removing the random header.">
+  <div class="header-right">
+    <button class="sidebar-toggle" id="sidebar-toggle" aria-label="Toggle sidebar">☰</button>
+  </div>
+</div>
+
+<!-- Sidebar overlay -->
+<div class="sidebar-overlay" id="sidebar-overlay"></div>
+
+<!-- Sidebar -->
+<div class="sidebar" id="sidebar">
+  <div class="sidebar-header">
+    <span>Menu</span>
+    <button class="sidebar-close" id="sidebar-close">&times;</button>
+  </div>
+  
+  <!-- Fixed categories section at top -->
+  <div class="sidebar-categories-container">
+    <div class="sidebar-categories" id="sidebar-categories"></div>
+  </div>
+  
+  <!-- Scrollable links section in middle -->
+  <div class="sidebar-links-container">
+    <div class="sidebar-links" id="sidebar-links"></div>
+  </div>
+  
+  <!-- Fixed settings section at bottom -->
+  <div class="sidebar-footer">
+    <div class="sidebar-section settings-section">
+      <h3 class="sidebar-section-title">Settings</h3>
+      <label class="sidebar-toggle-label" title="Makes the website boring by removing the random header.">
         <input type="checkbox" id="sfw-toggle" <%= sfw ? 'checked' : '' %> /> SFW Mode
       </label>
-      <label class="sfw-toggle-label" title="Use Google to search instead of DuckDuckGo. (For normies)">
-        <input type="checkbox" id="normy-toggle" <%= normy ? 'checked' : '' %> /> Normy Mode
-      </label>
+      <div class="search-engine-selector">
+        <label for="search-engine-select">Search Engine:</label>
+        <select id="search-engine-select" class="search-engine-dropdown">
+          <!-- Search engines will be populated from search_engines.json -->
+        </select>
+      </div>
     </div>
   </div>
 </div>
